@@ -1,7 +1,14 @@
 <template>
   <div id="app">
-    <page-header />
-    <router-view/>
+    <v-app>
+         <page-header />
+         <main>
+        <v-container fluid>
+          <router-view/>
+        </v-container>
+      </main>
+    </v-app>
+
   </div>
 </template>
 
@@ -26,7 +33,4 @@ export default {
   margin-top: 60px;
 }
 
-.btn__content {
-  color: white;
-}
 </style>
