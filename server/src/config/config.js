@@ -13,5 +13,8 @@ module.exports = {
       host: process.env.MYSQL_HOST,
       port: 3307
     }
+  },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || 'secret'
   }
 }
