@@ -30,5 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     return x
   }
 
+  User.associate = function (models) {
+  }
+
   return User
 }
