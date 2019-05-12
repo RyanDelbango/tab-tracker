@@ -19,7 +19,7 @@
             name: 'song-edit',
             params () {
               return {
-                songId: song.id
+                songId: song.SongId
               }
             }
           }">
@@ -61,7 +61,7 @@ export default {
   ],
   data () {
     return {
-      bookmark: false
+      bookmark: null
     }
   },
   computed: {
@@ -70,16 +70,17 @@ export default {
     ])
   },
   watch: {
-    async song (value) {
+    async song () {
       if (!this.isUserLoggedIn) {
         return
       }
       try {
-        const query = {
-          songId: this.song.id,
-          userId: this.$store.state.user.id
+        const bookmarks = (await BookmarksService.index({
+          songId: this.song.id
+        })).data
+        if (bookmarks.length) {
+          this.bookmark = bookmarks[0]
         }
-        this.bookmark = (await BookmarksService.index(query)).data
       } catch (err) {
         console.log(err)
       }

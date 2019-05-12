@@ -67,6 +67,7 @@ module.exports = {
     try {
       const userId = req.user.id
       const { bookmarkId } = req.params
+      console.log(req.params)
       const bookmark = await Bookmark.findOne({
         where: {
           id: bookmarkId,
